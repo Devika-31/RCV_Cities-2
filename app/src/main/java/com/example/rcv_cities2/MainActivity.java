@@ -16,18 +16,21 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    //data source
     private ArrayList<City> citisList;
     private RecyclerView rcvCities;
-private CitiesAdapter citiesAdapter;
+//adapter object
+    private CitiesAdapter citiesAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initui();
     }
-
+//init
     private void initui() {
         rcvCities = findViewById(R.id.rcvCities);
+      //array creation definition by new
         citisList = new ArrayList<>();
         citisList.add(new City(R.drawable.amrav, "Amravati", "Maharashtra", 4000000L,"Amravati is a beautiful city loerem fkfkfjf jnsnjfsfn jnjsnsnc"));
         citisList.add(new City(R.drawable.dehli, "Dehli", "Dehli", 500000L,"Demo description demo of details"));
@@ -57,14 +60,19 @@ private CitiesAdapter citiesAdapter;
                 new GridLayoutManager(this,3)
         );*/
         //staggered Grid
-        rcvCities.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
-        citiesAdapter=new CitiesAdapter(citisList);
-        citiesAdapter.setOnCityClickListener(new MyCityClickListener());
 
+        //allocating and creating space to rcv giving layout manager
+         rcvCities.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
+        //initializing and allocating space to the  adapter
+         citiesAdapter=new CitiesAdapter(citisList);
+         //class for listen the clicks
+        citiesAdapter.setOnCityClickListener(new MyCityClickListener());
+        //passing the data list to the  adapter
         rcvCities.setAdapter(citiesAdapter);
 
 
     }
+    //class to listen events and implementing the interface of adapter class
 class MyCityClickListener implements CitiesAdapter.OnCityClickListener{
 
     @Override

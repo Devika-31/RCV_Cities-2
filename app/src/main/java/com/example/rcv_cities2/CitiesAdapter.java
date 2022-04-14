@@ -17,22 +17,23 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.CityViewHolder> {
+    //var for acceesing the data received from main class
     private ArrayList<City> cityList;
 
-
+//constructor
     public CitiesAdapter(ArrayList cityList) {
         this.cityList = cityList;
     }
-
+//interface
     public interface OnCityClickListener {
         void onCityImageClick(ImageView imageView, City city, int position);
 
         void onCityNameClickListener(TextView textView, City city, int positon);
 
     }
-
+//creating  object of interface
     private OnCityClickListener onCityClickListener;
-
+//setting up the object
     public void setOnCityClickListener(OnCityClickListener
                                                onCityClickListener) {
 
@@ -42,6 +43,7 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.CityViewHo
     @NonNull
     @Override
     public CityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//infatng the layout
         LayoutInflater layoutInflater = LayoutInflater.
                 from(parent.getContext());
         //view is ref to container layout
@@ -61,6 +63,7 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.CityViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CityViewHolder holder, @SuppressLint("RecyclerView") int position) {
+//city object to get position
         City city = cityList.get(position);
         Random random= new Random();
         holder.itemView.setBackgroundColor(Color.rgb(Math.abs(random.nextInt()%256),
@@ -93,7 +96,7 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.CityViewHo
         public ImageView imgCity;
         public TextView tvname, tvstate;
         public TextView tvpopulation,tvDesc;
-
+//holding the views finding the views
         public CityViewHolder(@NonNull View itemView) {
             super(itemView);
             imgCity = itemView.findViewById(R.id.ivCity);
@@ -101,6 +104,7 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.CityViewHo
             tvstate = itemView.findViewById(R.id.tvState);
             tvpopulation = itemView.findViewById(R.id.tvPopulation);
             tvDesc=itemView.findViewById(R.id.tvDesc);
+            //listing the events and passing the data
             imgCity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -19,6 +19,7 @@ private TextView tvName,tvPopulation,tvState;
         city= (City) getIntent().getSerializableExtra(City.KEY_CITY);
         setContentView(R.layout.city_details_activity);
         initUI();
+        //binding the data
         bindDataToView();
 
     }
